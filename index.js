@@ -1,3 +1,5 @@
+import { timingSafeEqual } from "crypto"
+
 /* Your Code Here */
 
 /*
@@ -19,4 +21,31 @@ let allWagesFor = function () {
     }.bind(this), 0) // <== Hm, why did we need to add bind() there? We'll discuss soon!
 
     return payable
+}
+
+let createEmployeeRecord = function(row){
+    return {
+        firstName:row[0],
+        familyName:row[1],
+        title:row[2],
+        payPerHour:row[3],
+        timeInEvents:[ ],  //  empty array
+        timeOutEvents:[ ]  //  empty array
+    }
+}
+
+let createEmployeeRecords = function(arrayEmployeeRecord){  //  has a function called createEmployeeRecords
+    return arrayEmployeeRecord.map(function(row){
+        return createEmployeeRecord(row)  //  create 2 rows
+    })
+};
+
+let createTimeInEvent = function(timeInEvents){  // create a createTimeInEvent function passing argument timeInEvents
+    let [date, hour] = timeInEvents.split(' ')
+    this.timeInEvents.push({
+       type:"TimeIn",
+        date,
+        hour:parseInt(hour, 10),
+     })
+     return this
 }
