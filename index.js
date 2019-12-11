@@ -22,9 +22,21 @@ return card
 }
 
 let createEmployeeRecords = function (array){
-  array.map(function (e){
-    return createEmployeeRecord(e)
+  return array.map(function (e){
+   createEmployeeRecord(e)
   })
+}
+
+let createTimeInEvent = function(){
+
+}
+
+let createTimeOutEvent = function(){
+
+}
+
+let hoursWorkedOnDate = function(){
+  
 }
 
 let allWagesFor = function () {
