@@ -23,11 +23,24 @@ return card
 
 let createEmployeeRecords = function (array){
   return array.map(function (e){
-   createEmployeeRecord(e)
+   return createEmployeeRecord(e)
   })
 }
 
-let createTimeInEvent = function(){
+let createTimeInEvent = function(date){
+
+let splitDate = date.split(' ')
+let day = splitDate[0]
+let hour = Number(splitDate[1])
+
+// in array - timeEvents. add type, hour, date
+let checkIn = {
+  type: 'TimeIn',
+  hour: hour,
+  date: day
+}
+ this.timeInEvents.push(checkIn)
+ return this
 
 }
 
@@ -36,7 +49,7 @@ let createTimeOutEvent = function(){
 }
 
 let hoursWorkedOnDate = function(){
-  
+
 }
 
 let allWagesFor = function () {
