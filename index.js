@@ -44,8 +44,20 @@ let checkIn = {
 
 }
 
-let createTimeOutEvent = function(){
+let createTimeOutEvent = function(date){
 
+  let splitDate = date.split(' ')
+  let day = splitDate[0]
+  let hour = Number(splitDate[1])
+
+  // in array - timeEvents. add type, hour, date
+  let checkOut = {
+    type: 'TimeOut',
+    hour: hour,
+    date: day
+  }
+   this.timeOutEvents.push(checkOut)
+   return this
 }
 
 let hoursWorkedOnDate = function(){
