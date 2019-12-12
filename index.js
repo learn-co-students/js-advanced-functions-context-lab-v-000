@@ -73,8 +73,15 @@ let hoursWorkedOnDate = function(date){
 }
 
 let wagesEarnedOnDate = function(date){
-  let rawWage = hoursWorkedOnDate(date) * this.payPerHour
+  let rawWage = hoursWorkedOnDate.call(this,date) * this.payPerHour
       return parseFloat(rawWage.toString())
+}
+
+
+
+
+let findEmployeeByFirstName = function(srcArray,firstName){
+  return srcArray.find(element => element.firstName === firstName)
 }
 
 let allWagesFor = function () {
@@ -87,4 +94,13 @@ let allWagesFor = function () {
     }.bind(this), 0) // <== Hm, why did we need to add bind() there? We'll discuss soon!
 
     return payable
+}
+
+
+let calculatePayroll = function(array){
+  return array.reduce(function(index,record){
+  return index + allWagesFor.call(record)
+  //dont have to write a new method for this object
+},0)
+
 }
