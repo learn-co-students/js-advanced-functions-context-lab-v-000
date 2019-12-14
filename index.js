@@ -1,13 +1,48 @@
-/* Your Code Here */
+function createEmployeeRecord(employeeArr) {
+  return {
+    firstName: employeeArr[0],
+    familyName: employeeArr[1],
+    title: employeeArr[2],
+    payPerHour: employeeArr[3],
+    timeInEvents: [],
+    timeOutEvents: []
+  }
+}
 
-/*
- We're giving you this function. Take a look at it, you might see some usage
- that's new and different. That's because we're avoiding a well-known, but
- sneaky bug that we'll cover in the next few lessons!
+function createEmployeeRecords(employeesArr) {
+  return employeesArr.map(employeeArr => createEmployeeRecord(employeeArr))
+}
 
- As a result, the lessons for this function will pass *and* it will be available
- for you to use if you need it!
- */
+function createTimeInEvent(date) {
+  let e = {
+    type: "TimeIn",
+    hour: parseInt(date.split(' ')[1], 10),
+    date: date.split(' ')[0]
+  }
+  this.timeInEvents.push(e)
+  return this
+}
+
+function createTimeOutEvent(date) {
+  let e = {
+    type: "TimeOut",
+    hour: parseInt(date.split(' ')[1], 10),
+    date: date.split(' ')[0]
+  }
+  this.timeOutEvents.push(e)
+  return this
+}
+
+function hoursWorkedOnDate(date) {
+  let clockIn = this.timeInEvents.find(e => e.date === date)
+  let clockOut = this.timeOutEvents.find(e => e.date === date)
+  return (clockOut.hour - clockIn.hour)/100
+}
+
+function wagesEarnedOnDate(date) {
+  return hoursWorkedOnDate.call(this, date) * this.payPerHour
+}
+
 
 let allWagesFor = function () {
     let eligibleDates = this.timeInEvents.map(function (e) {
@@ -19,4 +54,17 @@ let allWagesFor = function () {
     }.bind(this), 0) // <== Hm, why did we need to add bind() there? We'll discuss soon!
 
     return payable
+}
+
+function findEmployeeByFirstName(employees, firstName) {
+  return employees.find(employee => employee.firstName === firstName)
+}
+
+function calculatePayroll(employees) {
+  let totalWages = []
+  employees.forEach(employee => {
+    let daysWorked = employee.timeInEvents.map(e => e.date)
+    daysWorked.forEach(day => totalWages.push(wagesEarnedOnDate.call(employee, day)))
+  })
+  return totalWages.reduce((acc, c) => acc + c)
 }
