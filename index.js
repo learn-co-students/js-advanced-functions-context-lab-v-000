@@ -66,3 +66,11 @@ function hoursWorkedOnDate(date) {
 function wagesEarnedOnDate(date) {
   return hoursWorkedOnDate.call(this, date) * this.payPerHour;
 };
+
+function calculatePayroll(employees) {
+  return employees.reduce((accumulator, element) => accumulator + allWagesFor.call(element), 0);
+};
+
+function findEmployeeByFirstName(employees, name) {
+  return employees.find(element => element.firstName === name);
+}
