@@ -62,3 +62,7 @@ function hoursWorkedOnDate(date) {
   }, 0);
   return (timeOut - timeIn) / 100;
 };
+
+function wagesEarnedOnDate(date) {
+  return hoursWorkedOnDate.call(this, date) * this.payPerHour;
+};
