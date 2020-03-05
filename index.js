@@ -78,12 +78,18 @@ let allWagesFor = function() {
 //   })).reduce((memo, wages) => memo + wages);
 // }
 
-let calculatePayroll = function(employeeRecords) {
-  let employeeWages = employeeRecords.forEach(employeeRecord => {
-    allWagesFor(employeeRecord);
-  });
-  return employeeWages.reduce((memo, wages) => memo + wages);
-};
+// let calculatePayroll = function(employeeRecords) {
+//   let employeeWages = employeeRecords.forEach(employeeRecord => {
+//     allWagesFor(employeeRecord);
+//   });
+//   return employeeWages.reduce((memo, wages) => memo + wages);
+// }
+
+let calculatePayroll = function(arrayOfEmployeeRecords){
+  return arrayOfEmployeeRecords.reduce(function(memo, rec){
+      return memo + allWagesFor.call(rec)
+  }, 0)
+}
 
 let findEmployeeByFirstName = function(employeeRecords, firstName) {
   return employeeRecords.find(employeeRecord => employeeRecord.firstName === firstName);
