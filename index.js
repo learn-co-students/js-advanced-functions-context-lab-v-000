@@ -72,11 +72,12 @@ let allWagesFor = function() {
   return payable
 }
 
-// let calculatePayroll = function(employeeRecords) {
-//   return (employeeRecords.forEach(employeeRecord => {
-//     return allWagesFor(employeeRecord)
-//   })).reduce((memo, wages) => memo + wages);
-// }
+// This follows reduce function explicit context setting as above
+let calculatePayroll = function(arrayOfEmployeeRecords){
+  return arrayOfEmployeeRecords.reduce(function(memo, rec){
+      return memo + allWagesFor.call(rec)
+  }, 0)
+}
 
 // let calculatePayroll = function(employeeRecords) {
 //   let employeeWages = employeeRecords.forEach(employeeRecord => {
@@ -84,12 +85,6 @@ let allWagesFor = function() {
 //   });
 //   return employeeWages.reduce((memo, wages) => memo + wages);
 // }
-
-let calculatePayroll = function(arrayOfEmployeeRecords){
-  return arrayOfEmployeeRecords.reduce(function(memo, rec){
-      return memo + allWagesFor.call(rec)
-  }, 0)
-}
 
 let findEmployeeByFirstName = function(employeeRecords, firstName) {
   return employeeRecords.find(employeeRecord => employeeRecord.firstName === firstName);
