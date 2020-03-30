@@ -1,4 +1,3 @@
-/* Your Code Here */
 const createEmployeeRecord = (array) => {
     return {
         firstName: array[0],
