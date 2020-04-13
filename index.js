@@ -70,8 +70,8 @@ let hoursWorkedOnDate = function(d){
     return d === e.date
   })
   // return inEvents
-  // console.log(inEvents)
-  return (outEvents.hour - inEvents.hour) / 100
+  console.log(inEvents)
+  // return (outEvents.hour - inEvents.hour) / 100
 
 }
 
