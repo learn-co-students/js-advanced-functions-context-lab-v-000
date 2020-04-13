@@ -71,7 +71,7 @@ let hoursWorkedOnDate = function(d){
   })
   return inEvents
   // console.log(inEvents)
-  // return (outEvents.hour - inEvents.hour) / 100
+  return (outEvents.hour - inEvents.hour) / 100
 
 }
 
