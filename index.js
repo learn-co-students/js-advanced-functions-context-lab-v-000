@@ -16,6 +16,9 @@ let createEmployeeRecord = function(empDataArray) {
   }
 
   createEmpName.call(["Elon", "Musk"]) //=> { firstName: 'Elon', lastName: 'Musk' }
+
+  Update: I could use call, apply, or bind on Object.assign like this: Object.assign.call(empDataArray, {}, {firstName: this[0]})
+  However, that wouldn't work either, as it returns { firstName: undefined }.
 */
 
 let createEmployeeRecords = function(employeesArray) {
