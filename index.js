@@ -16,10 +16,11 @@ let allWagesFor = function () {
     let eligibleDates = this.timeInEvents.map(function (e) {
         return e.date
     })
-
+    // console.log("eligibleDates", eligibleDates)
     let payable = eligibleDates.reduce(function (memo, d) {
         return memo + wagesEarnedOnDate.call(this, d)
     }.bind(this), 0) // <== Hm, why did we need to add bind() there? We'll discuss soon!
+    // console.log("payable", payable)
 
     return payable
 }
@@ -61,7 +62,9 @@ function createTimeInEvent(dateStampString){
     type: "TimeIn",
     hour: parseInt(dateStampString.slice(dateStampString.length - 4)),
     // hour: parseInt(dateStampString.slice(0, -5)),
-    date: dateStampString.slice(0, 10)
+    // date: dateStampString.slice(0, 10)
+    date: dateStampString.split(" ")[0]
+
 
 
 }
@@ -79,63 +82,50 @@ function createTimeOutEvent(dateStampString){
     type: "TimeOut",
     hour: parseInt(dateStampString.slice(dateStampString.length - 4)),
     // hour: parseInt(dateStampString.slice(0, -5)),
-    date: dateStampString.slice(0, 10) }
+    // date: dateStampString.slice(0, 10) }
+    date: dateStampString.split(" ")[0]
     // date: dateStampString.slice(0, 8) }
-
+  }
 
   this.timeOutEvents.push(newObject)
   return this
 }
 
-//
-// function hoursWorkedOnDate(formDate){
-//   // console.log("formDate", formDate)
-//   // console.log("formDate - 2", formDate.slice(0, -2))
-//   // console.log("this1", this )
-//   let rightTimeIn = this.timeInEvents.find( record => {
-//       // console.log("record", record )
-//       // console.log("this2", this )
-//       // console.log("record.date", record.date )
-//       // console.log("record.date with slice", record.date.slice(0, -1) )
-//       //
-//       // console.log("formDate", formDate )
-//       //
-//       // console.log("see", record.date.slice(0, -1) === formDate)
-//     // return record.date === formDate
-//     return record.date.slice(0, -1) === formDate
-//
-//   } )
-//   // console.log("rightTimeIn", rightTimeIn)
-//   // console.log("this3", this )
+
+
 
 
 
   function hoursWorkedOnDate(formDate){
-    debugger
+    // debugger
     let rightTimeIn = this.timeInEvents.find( record => {
-        console.log(formDate, "formDate")
-        console.log(record.date, "record.date")
-        console.log("rightTimeIn", rightTimeIn)
+        return record.date === formDate
 
-      return record.date.slice(0, -1) === formDate
     } )
-
-
-
-  let rightTimeOut = this.timeOutEvents.find( record => {
-    // console.log("this4", this )
-
-    // console.log("see2", record.date.slice(0, -1) === formDate)
+    let rightTimeOut = this.timeOutEvents.find( record => {
     return record.date === formDate
   } )
-    console.log("rightTimeOut", rightTimeOut)
   return ((rightTimeOut.hour - rightTimeIn.hour)/100)
 }
 
 
 
-function wagesEarnedOnDate(recordObj, dateOfForm){
-  return (recordObj.payPerHour * hoursWorkedOnDate(recordObj, dateOfForm))
+
+// dateOfForm: 44-03-15
+// describe("wagesEarnedOnDate", function () {
+//   it("calculates that the employee earned 54 dollars", function () {
+//     cRecord = createEmployeeRecord(["Julius", "Caesar", "General", 27])
+//     createTimeInEvent.call(cRecord, "44-03-15 0900")
+//     createTimeOutEvent.call(cRecord, "44-03-15 1100")
+//     expect(wagesEarnedOnDate.call(cRecord, "44-03-15")).to.equal(54)
+//   })
+
+function wagesEarnedOnDate(dateOfForm){
+  // console.log("dateOfForm", dateOfForm)
+  // console.log("this pay hour", this.payPerHour)
+  // console.log("hoursWorkedOnDate(dateOfForm)", hoursWorkedOnDate(dateOfForm))
+  // debugger
+    return (this.payPerHour * hoursWorkedOnDate.call(this, dateOfForm))
 }
 
 
@@ -147,16 +137,25 @@ function findEmployeeByFirstName(srcArray, firstNameString) {
 
 
 function calculatePayroll(employeesArray) {
-  // console.log("test1", employeesArray)
-  let wagesForEmployees = employeesArray.map( employee => allWagesFor(employee))
-  // console.log("test1", wagesForEmployees)
+  // console.log("employeesArray", employeesArray)
+  // console.log("employeesArray2", employeesArray.map( employee => allWagesFor(employee)))
 
+
+  let wagesForEmployees = employeesArray.map( employee => allWagesFor.call(employee))
   const reducer = (accumulator, currentValue) => accumulator + currentValue;
   let totalWagesDueForAll = wagesForEmployees.reduce(reducer)
   return totalWagesDueForAll
 }
 
-cRecord = createEmployeeRecord(["Julius", "Caesar", "General", 1000])
-createTimeInEvent.call(cRecord, "44-03-15 0900")
-createTimeOutEvent.call(cRecord, "44-03-15 1100")
-hoursWorkedOnDate.call(cRecord, "44-03-15")
+//
+//
+// cRecord = createEmployeeRecord(["Julius", "Caesar", "General", 27])
+// createTimeInEvent.call(cRecord, "44-03-15 0900")
+// createTimeOutEvent.call(cRecord, "44-03-15 1100")
+// wagesEarnedOnDate.call(cRecord, "44-03-15")
+
+//
+// cRecord = createEmployeeRecord(["Julius", "Caesar", "General", 1000])
+// createTimeInEvent.call(cRecord, "44-03-15 0900")
+// createTimeOutEvent.call(cRecord, "44-03-15 1100")
+// hoursWorkedOnDate.call(cRecord, "44-03-15")

@@ -1,6 +1,28 @@
 
 
 
+
+// adding the call part finally worked. but i'm not sure why
+// function wagesEarnedOnDate(dateOfForm){
+//   // console.log("dateOfForm", dateOfForm)
+//   // console.log("this pay hour", this.payPerHour)
+//   // console.log("hoursWorkedOnDate(dateOfForm)", hoursWorkedOnDate(dateOfForm))
+//   // debugger
+//     return (this.payPerHour * hoursWorkedOnDate.call(this, dateOfForm))
+// }
+
+
+
+
+
+
+
+
+
+
+// ..........
+
+
 let asgardianBrothers = [
   {
     firstName: "Thor",
@@ -20,7 +42,9 @@ let phrase = "I like this brown drink very much, bring me another!"
 
 
 introWithContext.call(asgardianBrothers[1], phrase)
-introWithContext.call(asgardianBrothers[1], phrase)
+// introWithContext.call(asgardianBrothers[1], phrase)
+
+
 
 
 
