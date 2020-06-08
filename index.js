@@ -56,14 +56,11 @@ function createEmployeeRecords(arrayOfArrays){
 function createTimeInEvent(dateStampString){
   // console.log("dateStampString:", dateStampString)
   // console.log("this", this)
-  debugger
+  // debugger
   let newObj = {
     type: "TimeIn",
-    // hour: parseInt(dateStampString.slice(dateStampString.length - 4)),
-    hour: parseInt(dateStampString.slice(0, -5)),
-
-    // date: dateStampString.slice(0, 10)
-    // date: dateStampString.slice(0, 10)
+    hour: parseInt(dateStampString.slice(dateStampString.length - 4)),
+    // hour: parseInt(dateStampString.slice(0, -5)),
     date: dateStampString.slice(0, 10)
 
 
@@ -80,11 +77,10 @@ function createTimeInEvent(dateStampString){
 function createTimeOutEvent(dateStampString){
   let newObject = {
     type: "TimeOut",
-    // hour: parseInt(dateStampString.slice(dateStampString.length - 4)),
-    hour: parseInt(dateStampString.slice(0, -5)),
-    // date: dateStampString.slice(0, 10) }
-    // date: dateStampString.slice(0, 10) }
-    date: dateStampString.slice(0, 8) }
+    hour: parseInt(dateStampString.slice(dateStampString.length - 4)),
+    // hour: parseInt(dateStampString.slice(0, -5)),
+    date: dateStampString.slice(0, 10) }
+    // date: dateStampString.slice(0, 8) }
 
 
   this.timeOutEvents.push(newObject)
