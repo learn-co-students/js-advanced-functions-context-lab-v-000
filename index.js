@@ -65,12 +65,30 @@ let createTimeInEvent = function(dateStamp) {
         return this
 }
 
-// 
+// has a function called createTimeOutEvent
 let createTimeOutEvent = function(dateStamp) {
-    console.log("this", this)
-    
-    
+    // console.log("this", this)
+    // this {
+    //   firstName: 'Byron',
+    //   familyName: 'Poodle',
+    //   title: 'Mascot',
+    //   payPerHour: 3,
+    //   timeInEvents: [],
+    //   timeOutEvents: []
+    // }
+    let [date, hour] = dateStamp.split(" ");
+    this.timeOutEvents.push({ 
+        // creates the correct type
+        type: "TimeOut",
+        // extracts the correct hour
+        hour: parseInt(hour, 10),
+        // extracts the correct date
+        date
+    })
+    return this
 }
+
+
 
 /*
  We're giving you this function. Take a look at it, you might see some usage
