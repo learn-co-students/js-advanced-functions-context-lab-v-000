@@ -65,7 +65,12 @@ let createTimeInEvent = function(dateStamp) {
         return this
 }
 
-
+// 
+let createTimeOutEvent = function(dateStamp) {
+    console.log("this", this)
+    
+    
+}
 
 /*
  We're giving you this function. Take a look at it, you might see some usage
