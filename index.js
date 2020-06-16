@@ -123,11 +123,31 @@ let hoursWorkedOnDate = function(dateStamp) {
 
 // 
 let wagesEarnedOnDate = function(dateStamp) {
-    console.log("this", this)
+    // console.log("this", this)
+    // this {
+    //   firstName: 'Julius',
+    //   familyName: 'Caesar',
+    //   title: 'General',
+    //   payPerHour: 27,
+    //   timeInEvents: [ { type: 'TimeIn', hour: 900, date: '44-03-15' } ],
+    //   timeOutEvents: [ { type: 'TimeOut', hour: 1100, date: '44-03-15' } ]
+    // }
 
-    console.log("dateStamp", dateStamp)
-    // 
+    // console.log("dateStamp", dateStamp)
+    // dateStamp 44-03-15
+
+    // REMEMBER TO USE VARIABLE/FUNCTION NAME AND THE ARGUMENT
+    // uses hoursWorkedOnDate
+     let hoursWorked = hoursWorkedOnDate.call(this, dateStamp)
+
+    let payRate = this.payPerHour
+    // console.log("this.payPerHour", this.payPerHour)
+    // this.payPerHour 27
+
+    // calculates that the employee earned 54 dollars
+    return hoursWorked * payRate
 }
+
 /*
  We're giving you this function. Take a look at it, you might see some usage
  that's new and different. That's because we're avoiding a well-known, but
@@ -143,8 +163,15 @@ let allWagesFor = function () {
     })
 
     let payable = eligibleDates.reduce(function (memo, d) {
+        // allWagesFor aggregates all the dates' wages and adds them together
+        // calculates that the employee earned 378 dollars
+        // uses wagesEarnedOnDate
         return memo + wagesEarnedOnDate.call(this, d)
     }.bind(this), 0) // <== Hm, why did we need to add bind() there? We'll discuss soon!
 
     return payable
+}
+
+let findEmployeeByFirstName = function(srcArray, firstName) {
+    
 }
