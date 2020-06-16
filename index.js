@@ -121,7 +121,13 @@ let hoursWorkedOnDate = function(dateStamp) {
     return timeOut - timeIn
 }
 
+// 
+let wagesEarnedOnDate = function(dateStamp) {
+    console.log("this", this)
 
+    console.log("dateStamp", dateStamp)
+    // 
+}
 /*
  We're giving you this function. Take a look at it, you might see some usage
  that's new and different. That's because we're avoiding a well-known, but
