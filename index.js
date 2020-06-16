@@ -173,7 +173,35 @@ let allWagesFor = function () {
 }
 
 let findEmployeeByFirstName = function(srcArray, firstName) {
-    console.log("srcArray", srcArray)
+    // console.log("this", this)
+    // this undefined
+
+    // console.log("srcArray", srcArray)
+    // srcArray [
+    //     {
+    //       firstName: 'Loki',
+    //       familyName: 'Laufeysson-Odinsson',
+    //       title: 'HR Representative',
+    //       payPerHour: 35,
+    //       timeInEvents: [],
+    //       timeOutEvents: []
+    //     },
+    //     {
+    //       firstName: 'Natalia',
+    //       familyName: 'Romanov',
+    //       title: 'CEO',
+    //       payPerHour: 150,
+    //       timeInEvents: [],
+    //       timeOutEvents: []
+    //     }
+    //   ]
+
+    // console.log("firstName", firstName)
+    // firstName Loki
+
+    // ✓ finds "Loki"
+    return srcArray.find(function(rec){
+        return rec.firstName === firstName
+    })
     
-    console.log("firstName", firstName)
 }
