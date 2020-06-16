@@ -89,6 +89,11 @@ let createTimeOutEvent = function(dateStamp) {
 }
 
 
+// 
+let hoursWorkedOnDate = function(dateStamp) {
+    console.log("this", this)
+}
+
 
 /*
  We're giving you this function. Take a look at it, you might see some usage
