@@ -89,9 +89,36 @@ let createTimeOutEvent = function(dateStamp) {
 }
 
 
-// 
+// uses wagesEarnedOnDate
 let hoursWorkedOnDate = function(dateStamp) {
-    console.log("this", this)
+// console.log("this", this)
+// this {
+//   firstName: 'Julius',
+//   familyName: 'Caesar',
+//   title: 'General',
+//   payPerHour: 1000,
+//   timeInEvents: [ { type: 'TimeIn', hour: 900, date: '44-03-15' } ],
+//   timeOutEvents: [ { type: 'TimeOut', hour: 1100, date: '44-03-15' } ]
+// }
+    // console.log("dateStamp", dateStamp)
+    // dateStamp 44-03-15
+
+    let employeeRecordDateIn = this.timeInEvents.find( ({date}) =>
+    date === dateStamp)
+
+    let timeIn = employeeRecordDateIn.hour/100;
+    // console.log("timeIn", timeIn)
+    // timeIn 9
+
+    let employeeRecordDateOut = this.timeOutEvents.find( ({date}) =>
+    date === dateStamp)
+ 
+    let timeOut = employeeRecordDateOut.hour/100;
+    // console.log("timeOut", timeOut)
+    // timeOut 11
+
+    // calculates that the employee worked 2 hours
+    return timeOut - timeIn
 }
 
 
