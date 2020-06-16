@@ -173,5 +173,7 @@ let allWagesFor = function () {
 }
 
 let findEmployeeByFirstName = function(srcArray, firstName) {
+    console.log("srcArray", srcArray)
     
+    console.log("firstName", firstName)
 }
