@@ -262,8 +262,8 @@ let calculatePayroll = function (employeeRecord) {
     //       timeOutEvents: [ [Object], [Object], [Object] ]
     //     }
     //   ]
-    return employeeRecord.reduce(acc, cv)
-        return acc + this(cv)
-
-    
+    return employeeRecord.reduce(function(acc, cv){
+        return acc + allWagesFor(cv)
+    }, 0)    
+    // TypeError: Cannot read property 'timeInEvents' of undefined
 }
