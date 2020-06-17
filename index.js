@@ -172,6 +172,7 @@ let allWagesFor = function () {
     return payable
 }
 
+
 let findEmployeeByFirstName = function(srcArray, firstName) {
     // console.log("this", this)
     // this undefined
@@ -202,6 +203,65 @@ let findEmployeeByFirstName = function(srcArray, firstName) {
     // ✓ finds "Loki"
     return srcArray.find(function(rec){
         return rec.firstName === firstName
-    })
+    })    
+}
+
+// exists
+let calculatePayroll = function (employeeRecord) {
+    // console.log("this", this)
+    // this undefined
+
+    // console.log("employeeRecord", employeeRecord)
+    // employeeRecord [
+    //     {
+    //       firstName: 'Thor',
+    //       familyName: 'Odinsson',
+    //       title: 'Electrical Engineer',
+    //       payPerHour: 45,
+    //       timeInEvents: [ [Object], [Object], [Object] ],
+    //       timeOutEvents: [ [Object], [Object], [Object] ]
+    //     },
+    //     {
+    //       firstName: 'Loki',
+    //       familyName: 'Laufeysson-Odinsson',
+    //       title: 'HR Representative',
+    //       payPerHour: 35,
+    //       timeInEvents: [ [Object], [Object], [Object] ],
+    //       timeOutEvents: [ [Object], [Object], [Object] ]
+    //     },
+    //     {
+    //       firstName: 'Natalia',
+    //       familyName: 'Romanov',
+    //       title: 'CEO',
+    //       payPerHour: 150,
+    //       timeInEvents: [ [Object], [Object], [Object] ],
+    //       timeOutEvents: [ [Object], [Object], [Object] ]
+    //     },
+    //     {
+    //       firstName: 'Darcey',
+    //       familyName: 'Lewis',
+    //       title: 'Intern',
+    //       payPerHour: 15,
+    //       timeInEvents: [ [Object], [Object], [Object] ],
+    //       timeOutEvents: [ [Object], [Object], [Object] ]
+    //     },
+    //     {
+    //       firstName: 'Jarvis',
+    //       familyName: 'Stark',
+    //       title: 'CIO',
+    //       payPerHour: 125,
+    //       timeInEvents: [ [Object], [Object], [Object] ],
+    //       timeOutEvents: [ [Object], [Object], [Object] ]
+    //     },
+    //     {
+    //       firstName: 'Anthony',
+    //       familyName: 'Stark',
+    //       title: 'Angel Investor',
+    //       payPerHour: 300,
+    //       timeInEvents: [ [Object], [Object], [Object] ],
+    //       timeOutEvents: [ [Object], [Object], [Object] ]
+    //     }
+    //   ]
+
     
 }
