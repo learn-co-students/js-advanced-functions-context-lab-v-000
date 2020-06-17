@@ -2,6 +2,8 @@
 // has a function called createEmployeeRecord
 let createEmployeeRecord = function(employeeRecord) {
     // console.log("this", this) // Endless Loop
+    console.log("employeeRecord", employeeRecord)
+    // employeeRecord [ 'Gray', 'Worm', 'Security', 1 ]
     return {
         // populates a firstName field from the 0th element
         firstName: employeeRecord[0],
@@ -88,7 +90,6 @@ let createTimeOutEvent = function(dateStamp) {
     return this
 }
 
-
 // uses wagesEarnedOnDate
 let hoursWorkedOnDate = function(dateStamp) {
 // console.log("this", this)
@@ -138,7 +139,7 @@ let wagesEarnedOnDate = function(dateStamp) {
 
     // REMEMBER TO USE VARIABLE/FUNCTION NAME AND THE ARGUMENT
     // uses hoursWorkedOnDate
-     let hoursWorked = hoursWorkedOnDate.call(this, dateStamp)
+    let hoursWorked = hoursWorkedOnDate.call(this, dateStamp)
 
     let payRate = this.payPerHour
     // console.log("this.payPerHour", this.payPerHour)
@@ -168,10 +169,8 @@ let allWagesFor = function () {
         // uses wagesEarnedOnDate
         return memo + wagesEarnedOnDate.call(this, d)
     }.bind(this), 0) // <== Hm, why did we need to add bind() there? We'll discuss soon!
-
     return payable
 }
-
 
 let findEmployeeByFirstName = function(srcArray, firstName) {
     // console.log("this", this)
@@ -263,7 +262,10 @@ let calculatePayroll = function (employeeRecord) {
     //     }
     //   ]
     return employeeRecord.reduce(function(acc, cv){
-        return acc + allWagesFor(cv)
-    }, 0)    
+    //     return acc + allWagesFor(cv)
+    // }, 0)    
     // TypeError: Cannot read property 'timeInEvents' of undefined
+
+    return acc + allWagesFor.call(cv)
+}, 0)  
 }
