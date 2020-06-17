@@ -262,6 +262,8 @@ let calculatePayroll = function (employeeRecord) {
     //       timeOutEvents: [ [Object], [Object], [Object] ]
     //     }
     //   ]
+    return employeeRecord.reduce(acc, cv)
+        return acc + this(cv)
 
     
 }
