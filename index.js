@@ -22,6 +22,7 @@ let allWagesFor = function () {
 }
 
 
+
 function createEmployeeRecord(array) {
     let employee = {
         firstName: array[0],
@@ -106,6 +107,10 @@ function calculatePayroll(empRecordsArray) {
              //find the wages worked on each date in their time in array
               wagesEarnedOnDate.call(empObj, timeInEvent.date)
         })
+
+        return empRecordsArray.reduce(function(memo, rec){
+            return memo + allWagesFor.call(rec)
+        }, 0)
     })
 
     console.log(allWages)
@@ -115,6 +120,7 @@ function calculatePayroll(empRecordsArray) {
 
     return payroll
 }
+
 
 
 
