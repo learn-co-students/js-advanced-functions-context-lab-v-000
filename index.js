@@ -93,34 +93,34 @@ function findEmployeeByFirstName(srcArray, name) {
 }
 
 
-function calculatePayroll(empRecordsArray) {
-    //console.log(empRecordsArray) - returns 6 employee records
+// function calculatePayroll(empRecordsArray) {
+//     //console.log(empRecordsArray) - returns 6 employee records
+    
+//     //for each employee record
+//     let allWages = empRecordsArray.map(empObj => {
+//         //console.log(empObj) - returns employee record
 
-    //for each employee record
-    let allWages = empRecordsArray.map(empObj => {
-        //console.log(empObj) - returns employee record
+//         empObj.timeInEvents.map(timeInEvent => {
+//             //console.log(timeInEvent)  - returns { type: 'TimeIn', hour: 800, date: '2018-01-01' }  
+//            // console.log(timeInEvent.date) - returns date in format: 0000-00-0000
+       
+//              //find the wages worked on each date in their time in array
+//               wagesEarnedOnDate.call(empObj, timeInEvent.date)
+//         })
+//     })
 
-        empObj.timeInEvents.map(timeInEvent => {
-            //console.log(timeInEvent)  - returns { type: 'TimeIn', hour: 800, date: '2018-01-01' }  
-           // console.log(timeInEvent.date) - returns date in format: 0000-00-0000
-
-             //find the wages worked on each date in their time in array
-              wagesEarnedOnDate.call(empObj, timeInEvent.date)
-        })
-
-        return empRecordsArray.reduce(function(memo, rec){
-            return memo + allWagesFor.call(rec)
-        }, 0)
-    })
-
-    console.log(allWages)
+//     console.log(allWages)
         
-    //add them together to find total wages for that employee
-    let payroll = allWages.reduce((total, w) => w + total, 0)
+//     //add them together to find total wages for that employee
+//     let payroll = allWages.reduce((total, w) => w + total, 0)
 
-    return payroll
+//     return payroll
+//}
+
+function calculatePayroll(empRecordsArray) {
+return empRecordsArray.reduce(function(memo, rec){
+    return memo + allWagesFor.call(rec)
+}, 0)
 }
 
-
-
-
+//We are following this order array.reduce(function(total, currentValue, currentIndex, arr), initialValue)
