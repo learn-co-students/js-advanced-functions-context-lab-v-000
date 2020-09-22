@@ -86,5 +86,5 @@ let findEmployeeByFirstName = function(employeeRecords, firstNameString){
 let calculatePayroll = function(employeeRecords){
   let payrole = 0
 
-  return employeeRecords.reduce((payrole, employee) => payrole + allWagesFor(employee))
+  return employeeRecords.reduce((payrole, employee) => payrole + allWagesFor.call(employee))
 }
