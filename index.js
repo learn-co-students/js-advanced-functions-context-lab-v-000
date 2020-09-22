@@ -9,6 +9,7 @@
  for you to use if you need it!
  */
 
+// Here
 let allWagesFor = function () {
     let eligibleDates = this.timeInEvents.map(function (e) {
         return e.date
@@ -42,6 +43,7 @@ let createEmployeeRecords = function(aryAry){
   return employeeRecords
 }
 
+// Here
 let createTimeInEvent = function(date){
   let timeInEvent = {
     type: "TimeIn",
@@ -67,8 +69,8 @@ let createTimeOutEvent = function(date){
 }
 
 let hoursWorkedOnDate = function(date){
-  let timeIn = this.timeInEvents.find(s => s.date === date).hour;
-  let timeOut = this.timeOutEvents.find(s => s.date === date).hour;
+  let timeIn = this.timeInEvents.find(timeEvent => timeEvent.date === date).hour;
+  let timeOut = this.timeOutEvents.find(timeEvent => timeEvent.date === date).hour;
 
   return (timeOut - timeIn)/100;
 }
@@ -81,26 +83,8 @@ let findEmployeeByFirstName = function(employeeRecords, firstNameString){
   return employeeRecords.find(employee => employee.firstName == firstNameString);
 }
 
-// Argument(s)
-// Array of employee records
 let calculatePayroll = function(employeeRecords){
   let payrole = 0
 
-  // employeeRecords.forEach(employee => {
-  //   payrole += allWagesFor(employee)
-  // })
-  // Behavior
-  // Using wagesEarnedOnDate, accumulate the value of all dates worked by the employee in the record used as context. Amount should be returned as a number.
-
-  // Returns
-  // Pay owed for all dates
-  // return payrole
   return employeeRecords.reduce((payrole, employee) => payrole + allWagesFor(employee))
 }
-
-
-// const batteryBatches = [4, 5, 3, 4, 4, 6, 5];
-//
-// // Code your solution here
-//
-// let totalBatteries = batteryBatches.reduce((total, element) => element + total)
