@@ -1,71 +1,62 @@
+
 /* Your Code Here */
-let calculatePayroll = function(employees){
-   return employees.reduce(function(memo, e){
-        return memo + allWagesFor.call(e)
-    }, 0);
+let wagesEarnedOnDate = function(date){
+    let hours = hoursWorkedOnDate.call(this, date);
+    return hours * this.payPerHour
 };
 
-let findEmployeeByFirstName = function(src, name){
-    return src.find(e => e.firstName === name)
+let hoursWorkedOnDate = function(date){
+    let i = this.timeInEvents.find(d => d.date === date);
+    let o = this.timeOutEvents.find(d => d.date === date);
+    return (o.hour - i.hour ) / 100;
 };
 
-let wagesEarnedOnDate = function(dStamp){
-    return hoursWorkedOnDate.call(this, dStamp) * this.payPerHour
-};
-
-let hoursWorkedOnDate = function(dStamp){
-     let hours = this.timeOutEvents.find(({date}) => date === dStamp).hour - this.timeInEvents.find(({date}) => date === dStamp).hour
-     console.log(hours)
-     return hours / 100;
-};
-
-let createTimeOutEvent = function(dStamp){
-    let [date, hour] = dStamp.split(' ');
+let createTimeOutEvent = function(dateStamp){
+    let [date, hour] = dateStamp.split(" ");
 
     this.timeOutEvents.push({
-        type: 'TimeOut',
+        type: "TimeOut",
         hour: parseInt(hour, 10),
         date: date
-    });
+    })
     return this
 };
 
-let createTimeInEvent = function(dStamp){
-    let [date, hour] = dStamp.split(' ');
+let createTimeInEvent = function(dateStamp){
+    let [date, hour] = dateStamp.split(" ");
 
     this.timeInEvents.push({
-        type: 'TimeIn',
+        type: "TimeIn",
         hour: parseInt(hour, 10),
         date: date
-    });
-    return this
+    })
+    return this 
 };
 
-let createEmployeeRecord = function(eArray){
+let createEmployeeRecords = function(employees){
+    return employees.map(e => createEmployeeRecord(e));
+};
+
+let createEmployeeRecord = function(eRecord){
     return {
-        firstName: eArray[0],
-        familyName: eArray[1],
-        title: eArray[2],
-        payPerHour: eArray[3],
+        firstName: eRecord[0],
+        familyName: eRecord[1],
+        title: eRecord[2],
+        payPerHour: eRecord[3],
         timeInEvents: [],
         timeOutEvents: []
     };
 };
 
-let createEmployeeRecords = function(eArrays){
-    return eArrays.map(row => createEmployeeRecord(row))
-};       
-
 /*
  We're giving you this function. Take a look at it, you might see some usage
  that's new and different. That's because we're avoiding a well-known, but
  sneaky bug that we'll cover in the next few lessons!
-
  As a result, the lessons for this function will pass *and* it will be available
  for you to use if you need it!
  */
 
-let allWagesFor = function () {
+ let allWagesFor = function () {
     let eligibleDates = this.timeInEvents.map(function (e) {
         return e.date
     })
@@ -76,3 +67,13 @@ let allWagesFor = function () {
 
     return payable
 }
+
+let findEmployeeByFirstName = function(srcArray, firstName){
+    return srcArray.find(e => e.firstName === firstName);
+};
+
+let calculatePayroll = function(employees){
+    return employees.reduce(function(memo, e){
+        return memo + allWagesFor.call(e);
+    },0)
+};
